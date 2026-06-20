@@ -39,8 +39,54 @@ Vreau o aplicație în consolă unde pot:
 -dacă fișierul este modificat.
 */
 
+_Bool isEmpty(char* string)
+{
+    if (*string == '\0' || *string == '\n') return 1;
+    return 0;
+}
+
+// Global variables
+char note[1024];
+_Bool running = 1;
+int option;
+
 int main()
 {
-    printf("Hello, World!\n");
+    do
+    {
+
+        printf("1.Write some text\n");
+        printf("2.Display the text\n");
+        printf("3.Quit\n");
+
+        printf("Your option: ");
+        scanf("%d",&option);
+
+        switch (option)
+        {
+        case 1:
+            printf("Your note: ");
+            getchar();
+            fgets(note,sizeof(note),stdin);
+            printf("Your note has been saved succesfully!\n");
+            break;
+
+        case 2:
+            if (isEmpty(note))
+            {
+                printf("There's no text\n");
+                break;
+            }
+            else
+            {
+                printf("%s\n",note);
+                break;
+            }
+
+        case 3:
+            running = 0;
+            break;
+        }
+    }while (running);
     return 0;
 }
