@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "note.h"
 
 /*
 Vreau o aplicație în consolă unde pot:
@@ -45,13 +46,14 @@ _Bool isEmpty(char* string)
     return 0;
 }
 
-// Global variables
-char note[1024];
-_Bool running = 1;
-int option;
-
 int main()
 {
+    Note note;
+    constructNote(&note);
+
+    int option;
+    _Bool running = 1;
+
     do
     {
 
@@ -65,27 +67,41 @@ int main()
         switch (option)
         {
         case 1:
-            printf("Your note: ");
-            getchar();
-            fgets(note,sizeof(note),stdin);
-            printf("Your note has been saved succesfully!\n");
-            break;
+            if (isEmpty(note.text))
+            {
+                printf("Your note: ");
+                getchar();
+                fgets(note.text,sizeof(note.text),stdin);
+                printf("Your note has been saved succesfully!\n");
+                break;
+            }
+            else
+            {
+                printf("Your note: ");
+                getchar();
+                fgets(note.text,sizeof(note.text),stdin);
+                printf("Your note has been saved and modified succesfully!\n");
+                break;
+            }
 
         case 2:
-            if (isEmpty(note))
+            if (isEmpty(note.text))
             {
                 printf("There's no text\n");
                 break;
             }
             else
             {
-                printf("%s\n",note);
+                printf("%s\n",note.text);
                 break;
             }
 
         case 3:
             running = 0;
             break;
+
+        default:
+            printf("Invalid option\n");
         }
     }while (running);
     return 0;
