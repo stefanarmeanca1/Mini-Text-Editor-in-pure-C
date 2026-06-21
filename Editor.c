@@ -41,7 +41,15 @@ void DocumentAppendText(Document *document, char* textBuffer)
             document->capacity *= 2;
 
         // Reallocate text's size by the capacity resulted above
-        document->text = realloc(document->text,document->capacity * sizeof(char));
+        char* newText = realloc(document->text,document->capacity * sizeof(char));
+
+        if (newText == NULL)
+        {
+            printf("Memory allocation failed!\n");
+            return;
+        }
+
+        document->text = newText;
     }
 
     // If there's enough capacity, concatenate it regardless
