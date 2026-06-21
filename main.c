@@ -45,7 +45,8 @@ Vreau o aplicație în consolă unde pot:
 void showMenu()
 {
     printf("1.View Text\n");
-    printf("2.Add text\n");
+    printf("2.Add Text\n");
+    printf("3.Show Info\n");
     printf("0.Quit\n");
     printf("Your option: ");
 }
@@ -73,6 +74,12 @@ int main()
             printf("Your text has been saved succesfully!\n");
             break;
 
+        case 3:
+            printf("Length: %zu\n",editor.doc.length);
+            printf("Capacity: %zu\n",editor.doc.capacity);
+            printf("Modified: %s\n",editor.doc.modified == 1 ? "Yes\n":"No\n");
+            break;
+
         case 0:
             editor.running = 0;
             break;
@@ -81,10 +88,7 @@ int main()
             printf("Enter a valid option!\n");
         }
     }while (editor.running);
-
-    // printf("Textul final:\n%s\n",editor.doc.text);
-    // printf("Dimensiunea: %zu",editor.doc.capacity);
-
+    
     destructEditor(&editor);
     return 0;
 }
