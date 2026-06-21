@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "note.h"
+#include "Editor.h"
+#include "stringlib.h"
 
 /*
 Vreau o aplicație în consolă unde pot:
@@ -40,69 +42,49 @@ Vreau o aplicație în consolă unde pot:
 -dacă fișierul este modificat.
 */
 
-_Bool isEmpty(char* string)
+void showMenu()
 {
-    if (*string == '\0' || *string == '\n') return 1;
-    return 0;
+    printf("1.View Text\n");
+    printf("2.Add text\n");
+    printf("0.Quit\n");
+    printf("Your option: ");
 }
 
 int main()
 {
-    Note note;
-    constructNote(&note);
+    Editor editor;
+    constructEditor(&editor);
 
-    int option;
-    _Bool running = 1;
+    do
+    {
+        int option;
+        showMenu();
+        scanf("%d",&option);
 
-    // do
-    // {
-    //
-    //     printf("1.Write some text\n");
-    //     printf("2.Display the text\n");
-    //     printf("3.Quit\n");
-    //
-    //     printf("Your option: ");
-    //     scanf("%d",&option);
-    //
-    //     switch (option)
-    //     {
-    //     case 1:
-    //         if (isEmpty(note.text))
-    //         {
-    //             printf("Your note: ");
-    //             getchar();
-    //             fgets(note.text,sizeof(note.text),stdin);
-    //             printf("Your note has been saved succesfully!\n");
-    //             break;
-    //         }
-    //         else
-    //         {
-    //             printf("Your note: ");
-    //             getchar();
-    //             fgets(note.text,sizeof(note.text),stdin);
-    //             printf("Your note has been saved and modified succesfully!\n");
-    //             break;
-    //         }
-    //
-    //     case 2:
-    //         if (isEmpty(note.text))
-    //         {
-    //             printf("There's no text\n");
-    //             break;
-    //         }
-    //         else
-    //         {
-    //             printf("%s\n",note.text);
-    //             break;
-    //         }
-    //
-    //     case 3:
-    //         running = 0;
-    //         break;
-    //
-    //     default:
-    //         printf("Invalid option\n");
-    //     }
-    // }while (running);
+        switch (option)
+        {
+        case 1:
+            printf("Your text:\n%s\n",editor.doc.text);
+            break;
+
+        case 2:
+            printf("Your text: ");
+            addText(&editor);
+            printf("Your text has been saved succesfully!\n");
+            break;
+
+        case 0:
+            editor.running = 0;
+            break;
+
+        default:
+            printf("Enter a valid option!\n");
+        }
+    }while (editor.running);
+
+    // printf("Textul final:\n%s\n",editor.doc.text);
+    // printf("Dimensiunea: %zu",editor.doc.capacity);
+
+    destructEditor(&editor);
     return 0;
 }

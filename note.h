@@ -8,13 +8,11 @@
 typedef struct
 {
     char *text;
-    int length;
+    size_t length;
     size_t capacity;
     _Bool modified;
-}Note;
+}Document;
 
-void constructNote(Note* n);
-void readNote(Note* n);
-void displayNote(Note* n);
-_Bool isEmpty(Note* n);
+void constructNote(Document *n);
+void destructNote(Document *n);
 #endif //TEXTEDITOR2_NOTE_H

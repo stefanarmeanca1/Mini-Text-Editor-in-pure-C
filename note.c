@@ -2,27 +2,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void constructNote(Note *n)
+void constructNote(Document *d)
 {
-    n->capacity = 32;
-    n->length = 0;
-    n->modified = 0;
-    n->text = malloc(n->capacity * sizeof(char));
+    d->capacity = 32;
+    d->length = 0;
+    d->modified = 0;
+    d->text = malloc(d->capacity * sizeof(char));
 
-    if (n->text == NULL)
+    if (d->text == NULL)
     {
-        n->capacity = 0;
+        d->capacity = 0;
         return;
     }
 
-    n->text[0] = '\0';
+    d->text[0] = '\0';
 }
 
-void destructNote(Note *n)
+void destructNote(Document *d)
 {
-    free(n->text);
-    n->text = NULL;
-    n->capacity = 0;
-    n->length = 0;
-    n->modified = 0;
+    free(d->text);
+    d->text = NULL;
+    d->capacity = 0;
+    d->length = 0;
+    d->modified = 0;
 }

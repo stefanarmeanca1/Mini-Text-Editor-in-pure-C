@@ -5,4 +5,8 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(TextEditor2 main.c
         note.c
-        note.h)
+        note.h
+        Editor.c
+        Editor.h
+        stringlib.c
+        stringlib.h)
