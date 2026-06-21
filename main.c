@@ -54,55 +54,55 @@ int main()
     int option;
     _Bool running = 1;
 
-    do
-    {
-
-        printf("1.Write some text\n");
-        printf("2.Display the text\n");
-        printf("3.Quit\n");
-
-        printf("Your option: ");
-        scanf("%d",&option);
-
-        switch (option)
-        {
-        case 1:
-            if (isEmpty(note.text))
-            {
-                printf("Your note: ");
-                getchar();
-                fgets(note.text,sizeof(note.text),stdin);
-                printf("Your note has been saved succesfully!\n");
-                break;
-            }
-            else
-            {
-                printf("Your note: ");
-                getchar();
-                fgets(note.text,sizeof(note.text),stdin);
-                printf("Your note has been saved and modified succesfully!\n");
-                break;
-            }
-
-        case 2:
-            if (isEmpty(note.text))
-            {
-                printf("There's no text\n");
-                break;
-            }
-            else
-            {
-                printf("%s\n",note.text);
-                break;
-            }
-
-        case 3:
-            running = 0;
-            break;
-
-        default:
-            printf("Invalid option\n");
-        }
-    }while (running);
+    // do
+    // {
+    //
+    //     printf("1.Write some text\n");
+    //     printf("2.Display the text\n");
+    //     printf("3.Quit\n");
+    //
+    //     printf("Your option: ");
+    //     scanf("%d",&option);
+    //
+    //     switch (option)
+    //     {
+    //     case 1:
+    //         if (isEmpty(note.text))
+    //         {
+    //             printf("Your note: ");
+    //             getchar();
+    //             fgets(note.text,sizeof(note.text),stdin);
+    //             printf("Your note has been saved succesfully!\n");
+    //             break;
+    //         }
+    //         else
+    //         {
+    //             printf("Your note: ");
+    //             getchar();
+    //             fgets(note.text,sizeof(note.text),stdin);
+    //             printf("Your note has been saved and modified succesfully!\n");
+    //             break;
+    //         }
+    //
+    //     case 2:
+    //         if (isEmpty(note.text))
+    //         {
+    //             printf("There's no text\n");
+    //             break;
+    //         }
+    //         else
+    //         {
+    //             printf("%s\n",note.text);
+    //             break;
+    //         }
+    //
+    //     case 3:
+    //         running = 0;
+    //         break;
+    //
+    //     default:
+    //         printf("Invalid option\n");
+    //     }
+    // }while (running);
     return 0;
 }
